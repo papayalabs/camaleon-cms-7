@@ -1,15 +1,15 @@
 # CAMALEON CMS
 
-![](https://camaleon.website/media/132/logo2.png)
+![](http://camaleon.tuzitio.com/media/132/logo2.png)
 
-[![Test supported versions](https://github.com/owen2345/camaleon-cms/actions/workflows/current_support.yml/badge.svg)](https://github.com/owen2345/camaleon-cms/actions/workflows/current_support.yml)
+![Build Status](https://github.com/owen2345/camaleon-cms/actions/workflows/current_support.yml/badge.svg)
 ![](https://img.shields.io/badge/Support-Immediate-green.svg)
 
-[Website](https://camaleon.website/)
+[Website](http://camaleon.tuzitio.com/)
 
-[Documentation](https://camaleon.website/docs.html)
+[Documentation](http://camaleon.tuzitio.com/docs.html)
 
-[Demonstration](https://camaleon.website/plugins/demo_manage/)
+[Demonstration](http://camaleon.tuzitio.com/plugins/demo_manage/)
 
 ## About
 
@@ -18,12 +18,18 @@ Camaleon CMS is a dynamic and advanced content management system based on Ruby o
 Camaleon CMS is a flexible manager where you can build your custom content structure without coding anything by custom fields and custom contents type.
 
 To download or publish themes go to Theme store:
-https://camaleon.website/store/themes
+http://camaleon.tuzitio.com/store/themes
 
 To download or publish plugins go to Plugin store:
-https://camaleon.website/store/plugins
+http://camaleon.tuzitio.com/store/plugins
 
 ![](screenshot.png)
+
+## Updates for PapayaLabs
+* Use a background image in Login Admin Page
+* Set db_prefix to null. 
+* Use cloudfront variable in Admin for AWS S3 Endopoint
+* Use UUID(String) instead AUTO(Integer) in all models
 
 ## With Camaleon you can do:
 * Integrate into existing Rails projects
@@ -78,7 +84,6 @@ https://camaleon.website/store/plugins
 * Post Clone - https://github.com/owen2345/camaleon-post-clone
 * Sitemap Customizer - https://github.com/brian-kephart/camaleon_sitemap_customizer
 * Image Optimizer - https://github.com/brian-kephart/camaleon_image_optimizer
-* Image/iFrame Lazy Loader - https://github.com/brian-kephart/camaleon_lazy_loader
 * Import / Export - https://github.com/owen2345/camaleon_export_import
 * Lightbox - https://github.com/owen2345/CamaImageLightbox
 * Autocomplete - https://github.com/gaelfokou/cama_autocomplete
@@ -86,9 +91,9 @@ https://camaleon.website/store/plugins
 * TinyMCE Template Integration - https://github.com/owen2345/Camaleon-Tinymce-Templates
 * Download Manager - https://github.com/max2320/camaleon-download
 * OAuth - https://github.com/owen2345/camaleon_oauth
-* Visual Editor - Paid Plugin ($) - https://camaleon.website/store/plugins/camaleon_editor
-* Spree Commerce Integration - Paid Plugin ($) - https://camaleon.website/store/plugins/camaleon-spree
-* Admin AJAX - Paid Plugin ($) - https://camaleon.website/store/plugins/admin_ajax
+* Visual Editor - Paid Plugin ($) - http://camaleon.tuzitio.com/store/plugins/camaleon_editor
+* Spree Commerce Integration - Paid Plugin ($) - http://camaleon.tuzitio.com/store/plugins/camaleon-spree
+* Admin AJAX - Paid Plugin ($) - http://camaleon.tuzitio.com/store/plugins/admin_ajax
 * **See here for a complete Gemfile**: https://github.com/owen2345/camaleon-cms/blob/master/docs/example_gemfile.rb
 
 ## Camaleon CMS has many useful frontend Themes such as:
@@ -96,41 +101,41 @@ https://camaleon.website/store/plugins
 * Clean Theme (Built in)
 * Wordpress Theme (Built in)
 * eCommerce - https://github.com/owen2345/cama-ecommerce-theme
-* eFashion - https://camaleon.website/store/themes/eFashion (Github: https://github.com/mazharoddin/camaleon-cms-efashion)
-* Shoppy - https://camaleon.website/store/themes/shoppy (Github: https://github.com/mazharoddin/camaleon-cms-shoppy)
-* CV - Paid Theme ($) - https://camaleon.website/store/themes/cv
-* Camaleon Site - Paid Theme ($) - https://camaleon.website/store/themes/camaleon_cms
-* Sky - Paid Theme ($) - https://camaleon.website/store/themes/sky
+* eFashion - http://camaleon.tuzitio.com/store/themes/eFashion (Github: https://github.com/mazharoddin/camaleon-cms-efashion)
+* Shoppy - http://camaleon.tuzitio.com/store/themes/shoppy (Github: https://github.com/mazharoddin/camaleon-cms-shoppy)
+* CV - Paid Theme ($) - http://camaleon.tuzitio.com/store/themes/cv
+* Camaleon Site - Paid Them ($) - http://camaleon.tuzitio.com/store/themes/camaleon_cms
+* Sky - Paid Theme ($) - http://camaleon.tuzitio.com/store/themes/sky
 
 
 ## Requirements
-* Rails 6.0+
+* Rails 4.2 or 5+
 * PostgreSQL, MySQL 5+ or SQlite
-* Ruby 2.7+
+* Ruby 2.2+
 * Imagemagick
 
 ## Installation
-* Install Ruby on Rails (Docker containerized guide [here](https://github.com/owen2345/rails_app_containerization))
+* Install Ruby on Rails
 * Create your rails project
 
   ```bash
-  rails new my_project
+  rails _5.2.6_ new theturtlefoundation
   ```
+* cd theturtlefoundation
+* nano Gemfile
 * Add the gem in your Gemfile
 
   ```ruby
-  gem "camaleon_cms"
-  # OR
-  # gem "camaleon_cms", github: 'owen2345/camaleon-cms' # latest development version
-  ```
-  
-* Add initializer `config/initializers/sprockets_fix.rb` to fix "Bug Segmentation fault" (Only Ruby 3+ - [sprokets issue](https://github.com/rails/sprockets/issues/633#issuecomment-774762509))
-```ruby
-  Rails.application.config.assets.configure do |env|
-    env.export_concurrent = false
-  end
-```
+  gem "camaleon_cms", github: 'papayalabs/camaleon-cms' # latest development version
+  gem 'draper', '~> 3' # for Rails 5+
+  gem 'jquery-rails' 
+  gem 'jquery-ui-rails'
+  gem "select2-rails"
+  # gem 'draper', '~> 4.0.2' # ruby 3.x
 
+  # For Ruby version < 2.5
+  # gem 'sprockets', '< 4' # Sprockets 4 requires Ruby version >= 2.5
+  ```
 
 * Install required Gem and dependencies
 
@@ -159,10 +164,75 @@ https://camaleon.website/store/plugins
 
 * Go to your browser and visit http://localhost:3000/
 
+## Deploy in Heroku
+* heroku create --stack heroku-18
+* Make sure sqlite gem and pg gem are in right groups
+
+  ```bash
+  group :production do
+    gem 'pg'
+  end
+
+  group :development, :test do
+    gem 'sqlite3'
+    # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+    gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  end
+  ```
+* In production.rb:
+
+  ```bash
+  config.assets.js_compressor = Uglifier.new(harmony: true)
+  config.assets.compile = true
+  config.assets.precompile << /\.(?:svg|eot|woff|woff2|ttf)\z/ (application.rb also)
+  ```
+
+* rm Gemfile.lock
+* gem install bundler -v 2.1.4
+* bundle _2.1.4_ install
+* bundle lock --add-platform x86_64-linux
+* git push heroku master
+* Camaleon CMS Installation and database structure
+
+  ```bash
+  heroku rails generate camaleon_cms:install
+  heroku rake camaleon_cms:generate_migrations
+  heroku rake db:migrate
+  ```
+## Backup and restore data from Heroku Postgresql
+* Make a backup
+
+  ```bash
+    heroku pg:backups:capture --app app_name
+  ```
+* Download the backup
+
+  ```bash
+    heroku pg:backups:download
+  ```
+  
+* restore to local database
+
+  ```bash
+    pg_restore --verbose --clean --no-acl --no-owner -p port -h localhost -U username -d database latest.dump
+  ```
+* enter in postgresql locally
+
+  ```bash
+    psql -U username -p port
+  ````
+* inside postgresql console fix schema_migrations ( replace with the values of the migration of your local installation )
+
+  ```bash
+      \c database
+      delete from schema_migrations;
+      insert into schema_migrations (version) values ('20211205134400'),('20211205134401'),('20211205134402'),('20211205134403'),('20211205134404'),('20211205134405'),('20211205134406'),('20211205134407'),('20211205134408'),('20211205134409'),('20211205134410'),('20211205134411'),('20211205134412');
+  ```
+
 ## Sample App / Demonstration
-* [Camaleon Server (current version)](https://camaleon.website/plugins/demo_manage/)
-* [Sample App](https://github.com/brian-kephart/Camaleon-CMS-Sample)
-* [Deploy Sample App in Heroku](https://heroku.com/deploy?template=https://github.com/brian-kephart/Camaleon-CMS-Sample)
+* [Camaleon Server (current version)](http://camaleon.tuzitio.com/plugins/demo_manage/)
+* [Sample App](https://github.com/owen2345/Camaleon-CMS-Sample)
+* [Deploy Sample App in Heroku](https://heroku.com/deploy?template=https://github.com/owen2345/Camaleon-CMS-Sample)
 
 ## Support
 If you have problems, please enter an issue [here.](https://github.com/owen2345/camaleon-cms/issues)
@@ -171,13 +241,13 @@ If you need support, need some extra functionality or need plugins, please conta
 * Email: owenperedo@gmail.com
 * Skype: owen-2345
 * Stack Overflow: Use "camaleon" as tag to ask questions related to this CMS (don't forget to include cms version + rails version).
-* Site: https://camaleon.website/
+* Site: http://camaleon.tuzitio.com/
 
 ## Author
 Owen Peredo Diaz
 
 ## License
-https://camaleon.website/license.html
+http://camaleon.tuzitio.com/license.html
 
 ## Testing
 * Init DB
@@ -199,7 +269,7 @@ bundle exec rspec
 
 ## Version History
 
-https://camaleon.website/version-history.html
+http://camaleon.tuzitio.com/version-history.html
 
 Previous stable version (v1.x): https://github.com/owen2345/camaleon-cms/tree/version_1x
 

@@ -3,6 +3,8 @@ module CamaleonCms
     include CamaleonCms::Metas
     include CamaleonCms::CustomFieldsRead
 
+    self.primary_key = :id
+
     def self.inherited(subclass)
       super
 

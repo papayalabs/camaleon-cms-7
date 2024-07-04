@@ -54,7 +54,7 @@ class CamaleonCmsAwsUploader < CamaleonCmsUploader
           elsif is_dir
             ''
           else
-            (@cloudfront.present? ? File.join(@cloudfront, key) : s3_file.public_url)
+            url = is_dir ? '' : s3_file.public_url
           end
 
     res = {
@@ -137,7 +137,7 @@ class CamaleonCmsAwsUploader < CamaleonCmsUploader
   # return: (AWS Bucket object)
   def bucket
     @bucket ||= lambda {
-      Aws.config.update({ region: @aws_region, credentials: Aws::Credentials.new(@aws_akey, @aws_asecret) })
+      config = Aws.config.update({ endpoint: @cloudfront, region: @aws_region, credentials: Aws::Credentials.new(@aws_akey, @aws_asecret) })
       s3 = Aws::S3::Resource.new
       s3.bucket(@aws_bucket)
     }.call

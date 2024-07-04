@@ -2,6 +2,8 @@ module CamaleonCms
   class CustomFieldsRelationship < CamaleonRecord
     self.table_name = "#{PluginRoutes.static_system_info['db_prefix']}custom_fields_relationships"
 
+    self.primary_key = :id
+
     # attr_accessible :objectid, :custom_field_id, :term_order, :value, :object_class,
     # :custom_field_slug, :group_number
     default_scope { order("#{CamaleonCms::CustomFieldsRelationship.table_name}.term_order ASC") }

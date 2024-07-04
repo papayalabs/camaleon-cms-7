@@ -47,7 +47,7 @@ module CamaleonCms
       when 'Post'
         if term_relationships.empty? && args[:cat_ids].nil?
           CamaleonCms::CustomFieldGroup.where(
-            '(objectid = ? AND object_class = ?) OR (objectid = ? AND object_class = ?)', id || -1, class_name, post_type.id, "PostType_#{class_name}"
+            '(objectid = ? AND object_class = ?) OR (objectid = ? AND object_class = ?)', self.id || "-1", class_name, post_type.id, "PostType_#{class_name}"
           )
         else
           cat_ids = categories.map(&:id)
@@ -56,7 +56,7 @@ module CamaleonCms
           CamaleonCms::CustomFieldGroup.where("(objectid = ? AND object_class = ?) OR
                                                (objectid = ? AND object_class = ?) OR
                                                (objectid IN (?) AND object_class = ?)",
-                                              id || -1, class_name,
+                                              self.id || "-1", class_name,
                                               post_type.id, "PostType_#{class_name}",
                                               cat_ids, "Category_#{class_name}")
         end

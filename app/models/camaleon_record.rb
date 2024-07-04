@@ -2,8 +2,13 @@
 
 class CamaleonRecord < ActiveRecord::Base
   include ActiveRecordExtras::Relation
-
+  default_scope -> { order(:created_at) }
   self.abstract_class = true
+  #Define UUID
+  before_create :set_uuid
+  def set_uuid
+    self.id = SecureRandom.uuid
+  end
 
   # save cache value for this key
   def cama_set_cache(key, val)

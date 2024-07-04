@@ -1,7 +1,7 @@
 module CamaleonCms
   class Media < CamaleonRecord
     self.table_name = "#{PluginRoutes.static_system_info['db_prefix']}media"
-
+    self.primary_key = :id
     belongs_to :site, required: false
     validates :name, uniqueness: {
       scope: %i[site_id is_folder folder_path is_public],
