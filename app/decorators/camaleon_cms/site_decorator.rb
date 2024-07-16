@@ -9,7 +9,7 @@ module CamaleonCms
     # return logo url for this site
     # default: this url will be returned if logo is not present.
     def the_logo(default = nil)
-      object.get_option("logo") || (default || "#{h.asset_url("camaleon_cms/theturtlefoundation-logo.png")}")
+      object.get_option("logo") || (default || "#{h.asset_url("camaleon_cms/camaleon.png")}")
     end
 
     def the_icon
